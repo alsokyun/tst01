@@ -1,0 +1,22 @@
+language: java
+jdk:
+  - openjdk8
+
+branches:
+  only:
+    - main
+
+# Travis 서버의 Home
+cache:
+  directories:
+    - '$HOME/.m2/repository'
+    - '$HOME/.gradle'
+
+script: "./gradlew clean build"
+
+# CI 빌드완료 시 메일로 알람
+notifications:
+  email:
+    recipients:
+      - alsokyun@gmail.com
+
