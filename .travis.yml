@@ -14,6 +14,24 @@ cache:
 
 script: "./gradlew clean build"
 
+
+before_deploy:
+  - zip -r tst01 *
+  - mkdir -p deploy_archive
+  - mv tst01.zip deploy_archive/tst01.zip
+
+deploy:
+  - provider: s3
+    access_key_id: $AWS_ACCESS_KEY      #travis 에 저장된 aws s3 버팃 엑세스키
+    secret_access_key: $AWS_SECRET_KEY  #travis 에 저장된 aws s3 버팃 개인키
+    bucket: tst01-build #S3버킷
+    region: ap-northeast-2
+    skip_cleanup: true
+    acl: private  #access control list
+    local_dir: deploy_archive
+    wait-until-deploy: true
+
+
 # CI 빌드완료 시 메일로 알람
 notifications:
   email:
