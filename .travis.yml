@@ -22,8 +22,8 @@ before_deploy:
 
 deploy:
   - provider: s3
-    access_key_id: $AWS_ACCESS_KEY      #travis 에 저장된 aws s3 버팃 엑세스키
-    secret_access_key: $AWS_SECRET_KEY  #travis 에 저장된 aws s3 버팃 개인키
+    access_key_id: $AWS_ACCESS_KEY      #travis 에 저장된 aws s3 버킷 엑세스키
+    secret_access_key: $AWS_SECRET_KEY  #travis 에 저장된 aws s3 버킷 개인키
     bucket: tst01-build #S3버킷
     region: ap-northeast-2
     skip_cleanup: true
