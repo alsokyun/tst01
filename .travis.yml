@@ -31,6 +31,18 @@ deploy:
     local_dir: deploy_archive
     wait-until-deploy: true
 
+  - provider: codedeploy
+    access_key_id: $AWS_ACCESS_KEY      #travis 에 저장된 aws 엑세스키
+    secret_access_key: $AWS_SECRET_KEY  #travis 에 저장된 aws 개인키
+    bucket: tst01-build
+    key: tst01.zip
+    build_type: zip
+    application: tst01
+    deployment_group: tst01-group
+    region: ap-northeast-2
+    wait-until-deploy: true
+
+
 
 # CI 빌드완료 시 메일로 알람
 notifications:
