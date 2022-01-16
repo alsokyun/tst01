@@ -29,7 +29,7 @@ deploy:
     skip_cleanup: true
     acl: private  #access control list
     local_dir: deploy_archive
-    wait-until-deploy: true
+    wait-until-deployed: true
 
   - provider: codedeploy
     access_key_id: $AWS_ACCESS_KEY      #travis 에 저장된 aws 엑세스키
@@ -40,7 +40,7 @@ deploy:
     application: tst01
     deployment_group: tst01-group
     region: ap-northeast-2
-    wait-until-deploy: true
+    wait-until-deployed: true
 
 
 
